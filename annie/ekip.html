@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ekip - Annie Müzikali</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Reset */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Variables and Global Styles */
+        :root {
+            --brand-red: #c00;
+            --brand-dark-red: #a00;
+            --brand-white: #ffffff;
+            --brand-light-gray: #f8f8f8;
+            --text-dark: #000000;
+            --text-light: #ffffff;
+            --text-gray-light: #d1d5db;
+            --text-gray-dark: #4a4a4a;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--brand-dark-red);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        body.body-no-scroll {
+            overflow: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            line-height: 1.2;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        button,
+        a {
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .container {
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+
+        @media (min-width: 640px) {
+            .container {
+                max-width: 640px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                max-width: 768px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .container {
+                max-width: 1024px;
+            }
+        }
+
+        @media (min-width: 1280px) {
+            .container {
+                max-width: 1280px;
+            }
+        }
+
+        /* Header */
+        .header {
+            position: relative;
+            background-color: var(--brand-white);
+            z-index: 10;
+            padding: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            z-index: 1;
+        }
+
+        .logo-container img {
+            max-width: 200px;
+        }
+
+        .logo {
+            height: 2.5rem;
+            width: auto;
+        }
+
+        .menu-button {
+            padding: 0.5rem;
+            border-radius: 9999px;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            background-color: transparent;
+            color: var(--text-dark);
+            transition: background-color 0.2s ease-in-out;
+            z-index: 101;
+        }
+
+        .menu-button:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        .menu-icon {
+            height: 1.5rem;
+            width: 1.5rem;
+        }
+
+        .close-menu-button {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            padding: 0.5rem;
+            border-radius: 9999px;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            background-color: transparent;
+            color: var(--text-dark);
+        }
+
+        /* Navigation Menu */
+        .main-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform: translateY(-100%);
+            transition: transform 0.3s ease-in-out, visibility 0.3s;
+            visibility: hidden;
+        }
+
+        .main-nav.is-open {
+            transform: translateY(0);
+            visibility: visible;
+        }
+
+        .nav-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+
+        .nav-links li {
+            margin: 2rem 0;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            font-size: 1.25rem;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .nav-links a:hover {
+            color: var(--brand-red);
+        }
+
+        @media (max-width: 767px) {
+            .logo-container img {
+                max-width: 120px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .header {
+                padding: 2rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+
+            .menu-button,
+            .close-menu-button {
+                display: none;
+            }
+
+            .main-nav {
+                position: static;
+                transform: none;
+                visibility: visible;
+                background: none;
+                backdrop-filter: none;
+                width: auto;
+                height: auto;
+            }
+
+            .nav-links {
+                display: flex;
+                flex-direction: row;
+                gap: 2rem;
+                align-items: center;
+            }
+
+            .nav-links li {
+                margin: 0;
+            }
+
+            .nav-links a {
+                font-size: 0.9rem;
+                color: var(--text-dark);
+            }
+
+            .nav-links a:hover {
+                color: var(--brand-red);
+            }
+        }
+
+        /* Content Page Styles */
+        .content-section {
+            padding: 4rem 0 5rem;
+        }
+
+        .content-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .content-container h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--text-light);
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .info-box {
+            background-color: var(--brand-white);
+            color: var(--text-dark);
+            padding: 2rem;
+            border-radius: 0.5rem;
+            margin-top: 2rem;
+        }
+
+        .info-box h2 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: var(--brand-red);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        @media (min-width: 768px) {
+            .content-container h1 {
+                font-size: 3.75rem;
+            }
+
+            .info-box h2 {
+                font-size: 2.75rem;
+            }
+        }
+
+        /* Team Grid Styles */
+        .team-grid {
+            display: grid;
+            gap: 2.5rem;
+        }
+
+        @media (min-width: 640px) {
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .team-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .team-member,
+        .cast-member {
+            text-align: center;
+            text-decoration: none;
+            color: var(--text-dark);
+            transition: transform 0.2s ease-in-out;
+            display: block;
+        }
+
+        .team-member:hover,
+        .cast-member:hover {
+            transform: translateY(-5px);
+        }
+
+        .team-member-photo,
+        .cast-member-photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto;
+            background-color: var(--brand-light-gray);
+            border: 3px solid var(--brand-red);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .team-member-photo img,
+        .cast-member-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .team-member h3,
+        .cast-member h3 {
+            margin-top: 1.5rem;
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .team-member p,
+        .cast-member p {
+            color: var(--text-gray-dark);
+            font-size: 1rem;
+            margin-top: 0.25rem;
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+            z-index: 200;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1.5rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s cubic-bezier(0.23, 1, 0.32, 1), visibility 0.3s;
+        }
+
+        .modal-overlay.is-open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            position: relative;
+            background-color: var(--brand-white);
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 2.5rem;
+            transform: translateY(1rem) scale(0.97);
+            opacity: 0;
+            transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1) 0.05s, opacity 0.3s cubic-bezier(0.23, 1, 0.32, 1) 0.05s;
+        }
+
+        .modal-overlay.is-open .modal-content {
+            transform: translateY(0) scale(1);
+            opacity: 1;
+        }
+
+        .modal-close-button {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: transparent;
+            border: none;
+            color: var(--text-gray-dark);
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: color 0.2s, background-color 0.2s;
+        }
+
+        .modal-close-button:hover {
+            color: var(--text-dark);
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        .modal-close-button .menu-icon {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+
+        .modal-body {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            align-items: center;
+            text-align: center;
+        }
+
+        .modal-body img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid var(--brand-red);
+            flex-shrink: 0;
+        }
+
+        .modal-text h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--brand-red);
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-text .modal-title {
+            font-size: 1.125rem;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .modal-text .modal-bio {
+            font-size: 1rem;
+            color: var(--text-gray-dark);
+            line-height: 1.7;
+            text-align: left;
+        }
+
+        @media (min-width: 768px) {
+            .modal-body {
+                flex-direction: row;
+                text-align: left;
+                align-items: flex-start;
+            }
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--brand-light-gray);
+            padding: 3rem 1.5rem;
+            border-top: 1px solid #eee;
+        }
+
+        .footer .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+        }
+
+        .footer-logo-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-logo-group img {
+            max-width: 120px;
+        }
+
+        .footer-copyright {
+            color: var(--text-gray-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-copyright img {
+            max-width: 100px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            display: flex;
+        }
+
+        .social-links a {
+            color: var(--text-dark);
+            margin: 0 0.75rem;
+            transition: color 0.2s ease-in-out;
+        }
+
+        .social-links a:hover {
+            color: var(--brand-red);
+        }
+
+        .social-icon {
+            height: 1.5rem;
+            width: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .footer .container {
+                flex-direction: row;
+                text-align: left;
+            }
+
+            .footer-logo-group {
+                align-items: flex-start;
+                margin-bottom: 0;
+            }
+
+            .footer-copyright {
+                margin-bottom: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root">
+        <header class="header">
+            <div class="container">
+                <a href="index.html" class="logo-container" aria-label="Ana Sayfa">
+                    <img src="images/annie-logo.png" alt="Annie Müzikali" />
+                </a>
+
+                <nav class="main-nav" id="main-nav">
+                    <button class="close-menu-button" id="close-menu-button-nav" aria-label="Close menu">
+                        <svg class="menu-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                    <ul class="nav-links">
+                        <li><a href="index.html">Ana Sayfa</a></li>
+                        <li><a href="hakkinda.html">Müzikal Hakkında</a></li>
+                        <li><a href="sartname.html">Şartname</a></li>
+                        <li><a href="ekip.html">Ekip</a></li>
+                        <li><a href="gecmis-projeler.html">Geçmiş Projeler</a></li>
+                    </ul>
+                </nav>
+
+                <button class="menu-button" id="menu-toggle" aria-label="Open menu" aria-expanded="false"
+                    aria-controls="main-nav">
+                    <svg class="menu-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <main>
+            <section class="content-section">
+                <div class="container">
+                    <div class="content-container">
+                        <h1>Ekip</h1>
+
+                        <div class="info-box">
+                            <h2>Değerlendirme Kurulu</h2>
+                            <div class="team-grid">
+                                <a href="#" class="team-member" data-name="İlhan Cinpir"
+                                    data-title="Genel Sanat Yönetmeni" data-photo="images/ilhan-cinpir.jpg"
+                                    data-bio="1975 yılında İstanbul’da doğdu. 1996 yılında D.E.Ü Devlet Konservatuvarı Sahne Sanatları,Opera Ana Sanat Dalını kazanarak 2001'de  pekiyi dereceyle mezun oldu. Konservatuvar dönemi boyunca İZDOB Solist Sanatçıları Ayşe Tek YENAL (Soprano), Tevfik RODOS (Bas), Elif UÇKAN (Soprano) ile  mezuniyetinin ardından ise İZDOB solist sanatçıları Cengiz SAYIN (Bariton) ve   Fahri ÖNOĞLU (Tenor) ile çalışmalarını sürdürdü.<br><br>İzmir’de birçok sanat kurumunda eğitmen ve yönetici olarak görev yapan sanatçı, bu görevleri sırasında çocuklar üzerine hizmet veren birçok sivil toplum kuruluşu ile ortak projelerde yer alarak, gönüllü eğitimler verdi.<br><br>2002 yılında İzmir Devlet Tiyatrosunda solist sanatçı olarak, 2003-2010 yılları arasında ise İzmir Devlet Opera ve Balesi kurumunda koro sanatçısı olarak (Tenor) olarak görev yaptı. 2004 yılında Tiyatro, Opera ve Bale Vakfı TOBAV İzmir Şubesinde şan, işitme ve koro eğitmeni olarak başladığı görevi sırasında başarıları üzerine 2006 yılında kurumun müdürlüğüne atandı. 3 yıl eğitmen, 6 yıl eğitmen ve müdür toplam 9 yıl sürdürdüğü görevi sırasında sayısız öğrenciyi müzik okullarının sınavlarına hazırladı ve % 100’e yakın başarı sağladı. Müdürlüğü sırasında Vakfın sanatsal eğitimler alanında yeni bölümlerin açılması yanında, öğrenci sayısında önemli artış ve eğitim kalitesinin en üst seviyeye gelmesini sağladı. Yine aynı kurumda birçok öğrenciye gönüllü olarak koro ve işitme eğitimleri verdi. Yaratıcısı ve yürütücüsü olduğu, İzmir Kalkınma Ajansından Hibe almaya hak kazanan; dezavantajlı 70 çocuğu müzik alanında meslek sahibi yapmayı amaçlayan “Sesime Kulak Verin” adlı projesi İZKA'nın en beğenilen projeleri arasında yer aldı.<br><br>2011 tarihinde TOBAV İzmir Şubesi Müdürlüğü görevinden istifa ederek, Opera sanatçısı eşi Fatma CİNPİR ile birlikte MOZART AKADEMİ’yi kurdu. Kendi sanat kurumu olan Akdemide de kısa sürede dünya çapında ses getiren bir çok proje ve festivale imza attı. Carmina Burana Projesi, Harry Potter Opera Projesi, Jessy Müzikali, Mozart Akademi İzmir Polifonik Korolar Festivali, Mozart Akademi Uluslararası Piyano Yarışması ve Festivali gibi etkinlikleri başarıyla gerçekleştirdi ve halen sürdürmektedir. Sanatçının Kerem ve Doğa adında iki çocuğu bulunmaktadır..">
+                                    <div class="team-member-photo"><img src="images/ilhan-cinpir.jpg"
+                                            alt="İlhan Cinpir"></div>
+                                    <h3>İlhan Cinpir</h3>
+                                    <p>Genel Sanat Yönetmeni</p>
+                                </a>
+                                <a href="#" class="team-member" data-name="Fatma Cinpir" data-title="Koro Şefi"
+                                    data-photo="images/fatma-cinpir.jpg"
+                                    data-bio="1978 yılında İzmir’de doğdu. İlk, orta ve lise öğrenimini İzmir’de tamamladıktan sonra Dokuz Eylül Üniversitesi Devlet Konservatuvarı’nın açtığı sınavı kazanarak, Sahne Sanatları, Opera Ana Sanat Dalı Şan bölümünde sırasıyla Nurdan Küçükekmekçi, Ayşe Tek Yenal ve Müfit Bayraşa’nın öğrencisi oldu. 2001 yılında mezun olduktan sonra birçok kurumda şan, solfej ve işitme eğitmeni olarak çalıştı. 2002 yılından itibaren Devlet Tiyatroları, Opera ve Balesi Çalışanları Yardımlaşma Vakfı (TOBAV) İzmir Şubesinde Koro şefi ve işitme eğitmeni olarak görev aldı. 2002 yılında başladığı Koro eğitmenliği görevi, 10 yıl boyunca Tobav’da daha sonra, İzmir Opera ve Balesi Çocuk Korosunda devam etti. Uzun yıllar Koro eğitmenliği sırasında birçok koro festivaline katıldı ve ödüller aldı. 2004-2012 yılları arasında İzmir Opera ve Balesinde Koro Sanatçısı olarak çalıştı. Bu görevi ve ayrıca yürüttüğü İzdob Çocuk Korosu görevleri sırasında Kültür Bakanlığı tarafından başarı ödülü aldı.<br><br>Tobav ve İzdob Çocuk Korosunu çalıştırdığı sırada Max- Moritz Sahne Kantatı , İncigül Opereti, Carmina Burana Sahne Kantatı Çocuk Korosu Partı , Tosca Operası Çocuk Korosu Partı, La Boheme Operası Çocuk Korosu Partı, Carmen Operası Çocuk Korosu Partı, Yusuf ile Züleyha Operası Çocuk Korosu Partı başta olmak üzere birçok koro eserini hazırladı ve sahneledi. 2012 yılında opera sanatçısı eşi ile birlikte Mozart Akademi Müzik Merkezini kuran sanatçı halen akademiye ait Çocuk ve Gençlik Korolarını çalıştırmaktadır.<br><br>İZDOB Koro Sanatçılığı sırasında görev aldığı eserler: Carmina Burana Sahne Kantatı, La Vida Breve Operası, Çanakkale Oratoryosu, Çanakkale, Çanakkale Oratoryosu, Şehitleri Oratoryosu, Aşk-ı Memnu Operası, İdomeneo Operası, 9. Senfoni , G.Mahler 2. Senfoni, Turandot Operası, Bir Yaz Gecesi Rüyası Balesi, Arşın Mal Alan Opereti, Kamelyalı Kadın Balesi, Kahraman Türk Kadınları Oratoryosu.">
+                                    <div class="team-member-photo"><img src="images/fatma-cinpir.jpg"
+                                            alt="Fatma Cinpir"></div>
+                                    <h3>Fatma Cinpir</h3>
+                                    <p>Koro Şefi</p>
+                                </a>
+                                <a href="#" class="team-member" data-name="Murat Aygen" data-title="Oyuncu"
+                                    data-photo="images/murat-aygen.jpg"
+                                    data-bio="Türk tiyatro, sinema ve dizi oyuncusu Murat Aygen, 29 Ekim 1971'de Diyarbakır'da doğmuştur. Mimar Sinan Üniversitesi'nde oyunculuk eğitimi aldıktan sonra kariyerine tiyatro ile başlayan Aygen, televizyon dizilerindeki rolleriyle geniş kitlelerce tanındı. Özellikle &quot;Medcezir&quot;'de canlandırdığı Faruk Beylice, &quot;İstanbullu Gelin&quot;'deki Can ve &quot;Mucize Doktor&quot;'daki Tanju Korman karakterleriyle büyük beğeni topladı. 2010 yılında oyuncu Nihan Aslı Aygen ile evlenen sanatçının, müzik yeteneğiyle dikkat çeken Nil Aygen adında bir kızı vardır.">
+                                    <div class="team-member-photo"><img src="images/murat-aygen.jpg" alt="Murat Aygen">
+                                    </div>
+                                    <h3>Murat Aygen</h3>
+                                    <p>Oyuncu</p>
+                                </a>
+                                <a href="#" class="team-member" data-name="Nihan Aslı Aygen" data-title="Oyuncu"
+                                    data-photo="images/nihan-asli-elmas.jpg"
+                                    data-bio="Oyuncu Murat Aygen'in eşi olan Nihan Aslı Aygen, kendisi gibi bir oyuncu ve aynı zamanda çocuk kitapları yazarıdır. Çift, 2010 yılında evlenmiştir ve bu evlilikten Nil Aygen adında bir kızları bulunmaktadır. Nihan Aslı Aygen, hem oyunculuk kariyerini hem de yazarlık yeteneğini bir arada yürütmektedir.">
+                                    <div class="team-member-photo"><img src="images/nihan-asli-elmas.jpg"
+                                            alt="Nihan Aslı Aygen"></div>
+                                    <h3>Nihan Aslı Aygen</h3>
+                                    <p>Oyuncu</p>
+                                </a>
+                                <a href="#" class="team-member" data-name="Kübra Şenyaylar" data-title="Koro Şefi"
+                                    data-photo="kubra-senyaylar.jpg"
+                                    data-bio="Müzisyen bir ailenin çocuğu olan Şenyaylar, 1993 Mersin doğumludur. Nevit Kodallı Güzel Sanatlar Lisesi Müzik Bölümü ve Marmara Üniversitesi Atatürk Eğitim Fakültesi Müzik Öğretmenliği Bölümü’nden mezun olduktan sonra, Kocaeli Üniversitesi GSF Performans Ana Sanat Dalı’nda koro üzerine tezli yüksek lisans yapmıştır. Reyhan Bezdüz, Atilla Çağdaş Değer, Çiğdem Aytepe, Orhun Orhon, Sofia Gioldassi ile şeflik; Simge İnce Yıldız, Alper Erdoğan, Mehveş Emeç ile piyano; Reyhan Bezdüz, Sibel Çoban ile keman; Bülent Bezdüz, Serkan Otacıoğlu ile şan çalışmıştır.<br><br>2013 yılından bu yana koro şefliği yapmaktadır.<br>Ars Nova, TRT İstanbul Radyosu Çok Sesli Gençlik Korosu, Özel Mimar Sinan Güzel Sanatlar Lisesi Korosu, SANSEV Minikler Korosu’nun şefliğini yapmıştır.<br><br>Kocaeli Üniversitesi Güzel Sanatlar Fakültesi Öğretim Görevlisidir.<br><br>23 Nisan 2022’ de Kenan Doğulu ile birlikte “En Büyük 23 Nisan Çocuk Korosu” rekorunu 1023 çocuktan oluşan koroyu yöneterek kırmıştır.<br><br>Gürer Aykal bestesi olan Lozan Marşı’nın Dünya Prömiyerini Cumhurbaşkanlığı Senfoni Orkestrası eşliğinde; kurucusu ve şefi olduğu Koro İstanbul gerçekleştirmiştir.<br><br>Annie Müzikali Çocuk Korosu şefliği yapmıştır.<br><br>İBB Kültür AŞ ve Yerebatan Sarnıcı Müzesi ile birlikte 1 ay boyunca 14 Night Shift konserleri gerçekleştirmiştir. Dünya Koro Sempozyumu, İstanbul Büyükşehir Belediyesi Koro Festivali, Yerebatan Sarnıcı Night Shift Konser Serisi, Grand Pera Emek Sahnesi, Caddebostan Kültür Merkezi, Santa Maria Draperis Kilisesi, Kırmızı Mektep, AKM, Heybeliada İnönü Müzesi, Çiçek Pasajı, CSO Ada Ankara, Efes Antik Tiyatro, İzmir Kültür Park, Harbiye Cemil Topuzlu Açık Hava Tiyatrosu gibi hem İstanbul’un hem de Türkiye’nin tarihi özelliklerine sahip pek çok noktasında ve festival sahnelerinde konserler vermiştir.<br><br>Türkiye’de birçok farklı şehrin festivalinde ve özel sahnelerinde konserler vermiştir.<br><br>Dasdas’da sahnelenen Titus Kompleks’in orkestra şefliğini, vokal koçluğunu ve Türkçe söz uyarlamalarını yapmıştır.<br><br>Levent Yüksel ile Senfonik Türkiye Turnesinde hem koro hem orkestra şefliği yapmıştır.<br><br>Bu yıl 6.sı düzenlenecek Pera Uluslararası Korolar Festivali Genel Sanat Direktörü ve Sevgi Her Şeydir Projesi’nin kurucusudur.<br><br>İBB tarafından düzenlenmekte olan bu yıl 3.sü gerçekleştirilecek, Uluslararası İstanbul Koro Festivalinin Genel Sanat Direktörüdür.<br><br>10. SANSEV Uluslararası İstanbul Korolar Festivali’nin Genel Koordinatörlüğünü yapmaktadır.<br><br>Koro İstanbul’u aktif olarak yönetmekte ve şeflik çalışmalarını sürdürmektedir.">
+                                    <div class="team-member-photo"><img src="kubra-senyaylar.jpg" alt="Kübra Şenyaylar">
+                                    </div>
+                                    <h3>Kübra Şenyaylar</h3>
+                                    <p>Koro Şefi</p>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="info-box">
+                            <h2>Çalıştırıcı Kadro</h2>
+                            <div class="team-grid">
+                                <a href="#" class="team-member" data-name="Kübra Şenyaylar" data-title="Koro Şefi"
+                                    data-photo="kubra-senyaylar.jpg"
+                                    data-bio="Müzisyen bir ailenin çocuğu olan Şenyaylar, 1993 Mersin doğumludur. Nevit Kodallı Güzel Sanatlar Lisesi Müzik Bölümü ve Marmara Üniversitesi Atatürk Eğitim Fakültesi Müzik Öğretmenliği Bölümü’nden mezun olduktan sonra, Kocaeli Üniversitesi GSF Performans Ana Sanat Dalı’nda koro üzerine tezli yüksek lisans yapmıştır. Reyhan Bezdüz, Atilla Çağdaş Değer, Çiğdem Aytepe, Orhun Orhon, Sofia Gioldassi ile şeflik; Simge İnce Yıldız, Alper Erdoğan, Mehveş Emeç ile piyano; Reyhan Bezdüz, Sibel Çoban ile keman; Bülent Bezdüz, Serkan Otacıoğlu ile şan çalışmıştır.<br><br>2013 yılından bu yana koro şefliği yapmaktadır.<br>Ars Nova, TRT İstanbul Radyosu Çok Sesli Gençlik Korosu, Özel Mimar Sinan Güzel Sanatlar Lisesi Korosu, SANSEV Minikler Korosu’nun şefliğini yapmıştır.<br><br>Kocaeli Üniversitesi Güzel Sanatlar Fakültesi Öğretim Görevlisidir.<br><br>23 Nisan 2022’ de Kenan Doğulu ile birlikte “En Büyük 23 Nisan Çocuk Korosu” rekorunu 1023 çocuktan oluşan koroyu yöneterek kırmıştır.<br><br>Gürer Aykal bestesi olan Lozan Marşı’nın Dünya Prömiyerini Cumhurbaşkanlığı Senfoni Orkestrası eşliğinde; kurucusu ve şefi olduğu Koro İstanbul gerçekleştirmiştir.<br><br>Annie Müzikali Çocuk Korosu şefliği yapmıştır.<br><br>İBB Kültür AŞ ve Yerebatan Sarnıcı Müzesi ile birlikte 1 ay boyunca 14 Night Shift konserleri gerçekleştirmiştir. Dünya Koro Sempozyumu, İstanbul Büyükşehir Belediyesi Koro Festivali, Yerebatan Sarnıcı Night Shift Konser Serisi, Grand Pera Emek Sahnesi, Caddebostan Kültür Merkezi, Santa Maria Draperis Kilisesi, Kırmızı Mektep, AKM, Heybeliada İnönü Müzesi, Çiçek Pasajı, CSO Ada Ankara, Efes Antik Tiyatro, İzmir Kültür Park, Harbiye Cemil Topuzlu Açık Hava Tiyatrosu gibi hem İstanbul’un hem de Türkiye’nin tarihi özelliklerine sahip pek çok noktasında ve festival sahnelerinde konserler vermiştir.<br><br>Türkiye’de birçok farklı şehrin festivalinde ve özel sahnelerinde konserler vermiştir.<br><br>Dasdas’da sahnelenen Titus Kompleks’in orkestra şefliğini, vokal koçluğunu ve Türkçe söz uyarlamalarını yapmıştır.<br><br>Levent Yüksel ile Senfonik Türkiye Turnesinde hem koro hem orkestra şefliği yapmıştır.<br><br>Bu yıl 6.sı düzenlenecek Pera Uluslararası Korolar Festivali Genel Sanat Direktörü ve Sevgi Her Şeydir Projesi’nin kurucusudur.<br><br>İBB tarafından düzenlenmekte olan bu yıl 3.sü gerçekleştirilecek, Uluslararası İstanbul Koro Festivalinin Genel Sanat Direktörüdür.<br><br>10. SANSEV Uluslararası İstanbul Korolar Festivali’nin Genel Koordinatörlüğünü yapmaktadır.<br><br>Koro İstanbul’u aktif olarak yönetmekte ve şeflik çalışmalarını sürdürmektedir.">
+                                    <div class="team-member-photo"><img src="kubra-senyaylar.jpg" alt="Kübra Şenyaylar">
+                                    </div>
+                                    <h3>Kübra Şenyaylar</h3>
+                                    <p>Koro Şefi</p>
+                                </a>
+                                <a href="#" class="team-member" data-name="Onur Atacan" data-title="Oyunculuk koçu"
+                                    data-photo="onur-atacan.jpg"
+                                    data-bio="1983 yılında İzmir’de doğan Mustafa Onur Atacan, Süleyman Demirel Üniversitesi Güzel Sanatlar Fakültesi Tiyatro Oyunculuk Bölümünden 2007 yılında mezun oldu. Eğitim hayatı boyunca hem oyunculuk hem de reji alanında çalışmalar yürüttü. Kariyeri boyunca Semaver Kumpanya, İzmir Devlet Tiyatrosu, TOBAV ve New York Sanat Akademisi gibi önemli kurumlarda görev aldı. 2020’de kurduğu Tiyatro Ansambl ile sahneye koyduğu oyunlar birçok ödüle değer bulundu. Ulusal ve uluslararası platformlarda yönetmen, yazar ve oyuncu olarak etkin rol üstlenen Atacan; reji, dramaturji, fiziksel tiyatro, doğaçlama ve metin yazımı alanlarında uzmanlaşmıştır.">
+                                    <div class="team-member-photo"><img src="onur-atacan.jpg" alt="Onur Atacan"></div>
+                                    <h3>Onur Atacan</h3>
+                                    <p>Oyunculuk koçu</p>
+                                </a>
+                                <a href="#" class="team-member" data-name="Hareket koçu" data-title="Hareket koçu"
+                                    data-photo="https://picsum.photos/id/237/227"
+                                    data-bio="Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec congue neque in lacus gravida dignissim. Praesent a ligula eu elit accumsan vulputate at auctor dolor. Aliquam dignissim justo justo, facilisis sollicitudin ipsum tempor non. Aliquam eu vestibulum mi. Nullam blandit libero in turpis gravida, a posuere nulla lobortis. Morbi ullamcorper interdum aliquam. Cras lacus eros, fringilla eu velit eu, blandit tincidunt tortor. Fusce accumsan, nibh non bibendum congue, ipsum neque venenatis velit, ac sollicitudin erat nulla at erat. Nullam eget massa porttitor, fermentum lacus ut, pharetra sem.">
+                                    <div class="team-member-photo"><img src="https://picsum.photos/id/237/227"
+                                            alt="Hareket koçu"></div>
+                                    <h3>Hareket koçu</h3>
+                                    <p>Hareket koçu</p>
+                                </a>
+                                <a href="#" class="team-member" data-name="İstanbul koordinatörü"
+                                    data-title="İstanbul koordinatörü" data-photo="https://picsum.photos/id/238/228"
+                                    data-bio="Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec congue neque in lacus gravida dignissim. Praesent a ligula eu elit accumsan vulputate at auctor dolor. Aliquam dignissim justo justo, facilisis sollicitudin ipsum tempor non. Aliquam eu vestibulum mi. Nullam blandit libero in turpis gravida, a posuere nulla lobortis. Morbi ullamcorper interdum aliquam. Cras lacus eros, fringilla eu velit eu, blandit tincidunt tortor. Fusce accumsan, nibh non bibendum congue, ipsum neque venenatis velit, ac sollicitudin erat nulla at erat. Nullam eget massa porttitor, fermentum lacus ut, pharetra sem.">
+                                    <div class="team-member-photo"><img src="https://picsum.photos/id/238/228"
+                                            alt="İstanbul koordinatörü"></div>
+                                    <h3>İstanbul koordinatörü</h3>
+                                    <p>İstanbul koordinatörü</p>
+                                </a>
+
+                            </div>
+                        </div>
+
+                        <div class="info-box">
+                            <h2>Kast</h2>
+                            <div class="team-grid">
+                                <a href="#" class="cast-member team-member" data-name="Murat Aygen"
+                                    data-title="Bay Warbucks" data-photo="images/murat-aygen.jpg"
+                                    data-bio="Türk tiyatro, sinema ve dizi oyuncusu Murat Aygen, 29 Ekim 1971'de Diyarbakır'da doğmuştur. Mimar Sinan Üniversitesi'nde oyunculuk eğitimi aldıktan sonra kariyerine tiyatro ile başlayan Aygen, televizyon dizilerindeki rolleriyle geniş kitlelerce tanındı. Özellikle &quot;Medcezir&quot;'de canlandırdığı Faruk Beylice, &quot;İstanbullu Gelin&quot;'deki Can ve &quot;Mucize Doktor&quot;'daki Tanju Korman karakterleriyle büyük beğeni topladı. 2010 yılında oyuncu Nihan Aslı Aygen ile evlenen sanatçının, müzik yeteneğiyle dikkat çeken Nil Aygen adında bir kızı vardır.">
+                                    <div class="cast-member-photo"><img src="images/murat-aygen.jpg" alt="Murat Aygen">
+                                    </div>
+                                    <h3>Murat Aygen</h3>
+                                    <p>Bay Warbucks</p>
+                                </a>
+                                <a href="#" class="cast-member team-member" data-name="Nihan Aslı Aygen"
+                                    data-title="Mis Hannigan" data-photo="images/nihan-asli-elmas.jpg"
+                                    data-bio="Oyuncu Murat Aygen'in eşi olan Nihan Aslı Aygen, kendisi gibi bir oyuncu ve aynı zamanda çocuk kitapları yazarıdır. Çift, 2010 yılında evlenmiştir ve bu evlilikten Nil Aygen adında bir kızları bulunmaktadır. Nihan Aslı Aygen, hem oyunculuk kariyerini hem de yazarlık yeteneğini bir arada yürütmektedir.">
+                                    <div class="cast-member-photo"><img src="images/nihan-asli-elmas.jpg"
+                                            alt="Nihan Aslı Aygen"></div>
+                                    <h3>Nihan Aslı Aygen</h3>
+                                    <p>Mis Hannigan</p>
+                                </a>
+                                <a href="#" class="cast-member team-member" data-name="Nil Aygen" data-title="Annie"
+                                    data-photo="images/nil-aygen.jpg"
+                                    data-bio="Oyuncu Murat Aygen'in kızı olan Nil Aygen, genç yaşına rağmen müzik alanındaki yeteneğiyle dikkat çekiyor. Özellikle kendi bestelerini yapması ve klasik müziğe olan ilgisiyle biliniyor. Uluslararası festivallerde sahne alarak müzik kariyerine şimdiden güçlü bir başlangıç yaptı.">
+                                    <div class="cast-member-photo"><img src="images/nil-aygen.jpg" alt="Nil Aygen">
+                                    </div>
+                                    <h3>Nil Aygen</h3>
+                                    <p>Annie</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-logo-group">
+                    <img src="images/annie-logo.png" alt="Annie Müzikali" />
+                </div>
+
+                <p class="footer-copyright">
+                    &copy; 2025 Mozart Akademi. Tüm Hakları Saklıdır.
+                    <a href="https://www.mozartakademi.com" target="_blank" rel="noopener noreferrer"><img
+                            src="images/mozart-akademi-logo.png" alt="Mozart Akademi" class="about-image"></a>
+                </p>
+
+                <div class="social-links">
+                    <a href="https://www.facebook.com/share/1CkZqw8r9q/" aria-label="Facebook" target="_blank"
+                        rel="noreferrer">
+                        <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                            fill="currentColor">
+                            <path
+                                d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238 .195 2.238 .195v2.46h-1.26c-1.243 0-1.63 .771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" />
+                        </svg>
+                    </a>
+                    <a href="https://instagram.com/mozartakademi" aria-label="Instagram" target="_blank"
+                        rel="noreferrer">
+                        <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                            fill="currentColor">
+                            <path
+                                d="M12 2.163c3.204 0 3.584 .012 4.85 .07 3.252 .148 4.771 1.691 4.919 4.919.058 1.265 .069 1.645 .069 4.85s-.011 3.584-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266 .058-1.644 .07-4.85 .07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.069-1.645-.069-4.85s.011-3.584.069-4.85c.149-3.225 1.664-4.771 4.919-4.919C8.416 2.175 8.796 2.163 12 2.163zm0 1.626c-3.141 0-3.492 .011-4.71 .068-2.766 .126-3.858 1.225-3.984 3.984C3.25 8.508 3.238 8.859 3.238 12s.011 3.492.068 4.71c.126 2.766 1.218 3.858 3.984 3.984 1.218 .057 1.569 .068 4.71 .068s3.492-.011 4.71-.068c2.766-.126 3.858-1.225 3.984-3.984.057-1.218.068-1.569.068-4.71s-.011-3.492-.068-4.71c-.126-2.766-1.218-3.858-3.984-3.984C15.492 3.8 15.141 3.789 12 3.789zM12 8.169a3.831 3.831 0 100 7.662 3.831 3.831 0 000-7.662zm0 6.036a2.205 2.205 0 110-4.41 2.205 2.205 0 010 4.41zM16.965 6.57a1.2 1.2 0 100 2.4 1.2 1.2 0 000-2.4z" />
+                        </svg>
+                    </a>
+                    <a href="https://www.youtube.com/@mozartakademi211" aria-label="YouTube" target="_blank"
+                        rel="noreferrer">
+                        <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                            fill="currentColor">
+                            <path
+                                d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Team Member Modal -->
+    <div id="team-modal-overlay" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-name">
+        <div class="modal-content">
+            <button id="modal-close-button" class="modal-close-button" aria-label="Kapat">
+                <svg class="menu-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            <div class="modal-body">
+                <img id="modal-photo" src="" alt="">
+                <div class="modal-text">
+                    <h3 id="modal-name"></h3>
+                    <p class="modal-title" id="modal-title-text"></p>
+                    <p class="modal-bio" id="modal-bio-text"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile Menu
+        const menuToggle = document.getElementById('menu-toggle');
+        const closeMenuButtonNav = document.getElementById('close-menu-button-nav');
+        const mainNav = document.getElementById('main-nav');
+
+        if (menuToggle && mainNav && closeMenuButtonNav) {
+            menuToggle.addEventListener('click', () => {
+                mainNav.classList.add('is-open');
+                menuToggle.setAttribute('aria-expanded', 'true');
+                menuToggle.style.visibility = 'hidden';
+                document.body.classList.add('body-no-scroll');
+            });
+
+            const closeNav = () => {
+                mainNav.classList.remove('is-open');
+                menuToggle.setAttribute('aria-expanded', 'false');
+                menuToggle.style.visibility = 'visible';
+                if (!document.querySelector('.modal-overlay.is-open')) {
+                    document.body.classList.remove('body-no-scroll');
+                }
+            };
+
+            closeMenuButtonNav.addEventListener('click', closeNav);
+        }
+
+        // Team Member Modal
+        const teamMembers = document.querySelectorAll('.team-member');
+        const modalOverlay = document.getElementById('team-modal-overlay');
+        const modalCloseButton = document.getElementById('modal-close-button');
+        const modalPhoto = document.getElementById('modal-photo');
+        const modalName = document.getElementById('modal-name');
+        const modalTitle = document.getElementById('modal-title-text');
+        const modalBio = document.getElementById('modal-bio-text');
+
+        const openModal = (name, title, photo, bio) => {
+            modalPhoto.src = photo;
+            modalPhoto.alt = name;
+            modalName.textContent = name;
+            modalTitle.textContent = title;
+            modalBio.innerHTML = bio;
+            modalOverlay.classList.add('is-open');
+            document.body.classList.add('body-no-scroll');
+        };
+
+        const closeModal = () => {
+            modalOverlay.classList.remove('is-open');
+            if (!mainNav.classList.contains('is-open')) {
+                document.body.classList.remove('body-no-scroll');
+            }
+        };
+
+        teamMembers.forEach(member => {
+            member.addEventListener('click', (e) => {
+                e.preventDefault();
+                const { name, title, photo, bio } = e.currentTarget.dataset;
+                if (bio) { // Only open modal if bio exists
+                    openModal(name, title, photo, bio);
+                }
+            });
+        });
+
+        if (modalCloseButton) {
+            modalCloseButton.addEventListener('click', closeModal);
+        }
+
+        if (modalOverlay) {
+            modalOverlay.addEventListener('click', (e) => {
+                if (e.target === modalOverlay) {
+                    closeModal();
+                }
+            });
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modalOverlay.classList.contains('is-open')) {
+                closeModal();
+            }
+        });
+
+    </script>
+</body>
+
+</html>
