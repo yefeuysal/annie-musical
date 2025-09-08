@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Annie Müzikali İstanbul Seçmeleri - Şartname ve Bilgilendirme</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Reset */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Variables and Global Styles */
+        :root {
+            --brand-red: #c00;
+            --brand-dark-red: #a00;
+            --brand-white: #ffffff;
+            --brand-light-gray: #f8f8f8;
+            /* For footer */
+            --text-dark: #000000;
+            --text-light: #ffffff;
+            --text-gray-light: #d1d5db;
+            /* Light gray for dark backgrounds */
+            --text-gray-dark: #4a4a4a;
+            /* Dark gray for light backgrounds */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--brand-dark-red);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            line-height: 1.2;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        button,
+        a {
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .container {
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+
+        @media (min-width: 640px) {
+            .container {
+                max-width: 640px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                max-width: 768px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .container {
+                max-width: 1024px;
+            }
+        }
+
+        @media (min-width: 1280px) {
+            .container {
+                max-width: 1280px;
+            }
+        }
+
+        /* Header */
+        .header {
+            position: relative;
+            background-color: var(--brand-white);
+            z-index: 10;
+            padding: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            z-index: 1;
+        }
+
+        .logo-container img {
+            max-width: 200px;
+        }
+
+        .logo {
+            height: 2.5rem;
+            width: auto;
+        }
+
+        .menu-button {
+            padding: 0.5rem;
+            border-radius: 9999px;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            background-color: transparent;
+            color: var(--text-dark);
+            transition: background-color 0.2s ease-in-out;
+            z-index: 101;
+            /* Above nav overlay */
+        }
+
+        .menu-button:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        .menu-icon {
+            height: 1.5rem;
+            width: 1.5rem;
+        }
+
+        .close-menu-button {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            padding: 0.5rem;
+            border-radius: 9999px;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            background-color: transparent;
+            color: var(--text-dark);
+        }
+
+        /* Navigation Menu */
+        .main-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform: translateY(-100%);
+            transition: transform 0.3s ease-in-out, visibility 0.3s;
+            visibility: hidden;
+        }
+
+        .main-nav.is-open {
+            transform: translateY(0);
+            visibility: visible;
+        }
+
+        .nav-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+
+        .nav-links li {
+            margin: 2rem 0;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            font-size: 1.25rem;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .nav-links a:hover {
+            color: var(--brand-red);
+        }
+
+        @media (max-width: 767px) {
+            .logo-container img {
+                max-width: 120px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .header {
+                padding: 2rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+
+            .menu-button,
+            .close-menu-button {
+                display: none;
+            }
+
+            .main-nav {
+                position: static;
+                transform: none;
+                visibility: visible;
+                background: none;
+                backdrop-filter: none;
+                width: auto;
+                height: auto;
+            }
+
+            .nav-links {
+                display: flex;
+                flex-direction: row;
+                gap: 2rem;
+                align-items: center;
+            }
+
+            .nav-links li {
+                margin: 0;
+            }
+
+            .nav-links a {
+                font-size: 0.9rem;
+                color: var(--text-dark);
+            }
+
+            .nav-links a:hover {
+                color: var(--brand-red);
+            }
+        }
+
+        /* Sartname Page Content */
+        .about-section {
+            padding: 4rem 0 5rem;
+        }
+
+        .about-content {
+            max-width: 80ch;
+            margin: 0 auto;
+        }
+
+        .about-content h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .about-content h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-gray-light);
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .info-box {
+            background-color: var(--brand-white);
+            color: var(--text-dark);
+            padding: 2rem;
+            border-radius: 0.5rem;
+            margin-top: 2rem;
+        }
+
+        .info-box h3 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--brand-red);
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .info-box h4 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-top: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .info-box p,
+        .info-box ul li {
+            color: var(--text-gray-dark);
+        }
+
+        .info-box p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .info-box ul {
+            list-style-position: inside;
+            padding-left: 0;
+            margin-bottom: 1.5rem;
+            list-style-type: none;
+        }
+
+        .info-box ul li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .info-box ul li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--brand-red);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+        }
+
+        .info-box ul li strong {
+            color: var(--text-dark);
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            text-align: center;
+            margin-top: 2rem;
+            padding: 1rem 2.5rem;
+            background-color: var(--brand-red);
+            color: var(--brand-white);
+            font-weight: 700;
+            font-size: 1.125rem;
+            border: none;
+            border-radius: 0.375rem;
+            transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+        }
+
+        .btn.btn2 {
+            display: inline-block;
+            width: auto;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            background-color: var(--brand-dark-red);
+            color: var(--brand-white);
+        }
+
+        @media (max-width: 767px) {
+            .about-content h1 {
+                font-size: 2.25rem;
+                word-break: break-word;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .about-content h1 {
+                font-size: 3.75rem;
+            }
+        }
+
+
+        /* Call To Action Section */
+        .cta {
+            position: relative;
+            padding: 8rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background-image: url('matilda-05.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .cta-overlay {
+            position: absolute;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            padding: 0 1rem;
+        }
+
+        .cta-title {
+            font-weight: 900;
+            font-size: 3.75rem;
+            letter-spacing: -0.02em;
+            line-height: 1;
+            color: var(--text-light);
+        }
+
+        .cta-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-light);
+            margin-top: 1rem;
+            max-width: 60ch;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @media (min-width: 640px) {
+            .cta-title {
+                font-size: 4.5rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .cta-title {
+                font-size: 5rem;
+            }
+
+            .cta-subtitle {
+                font-size: 1.25rem;
+            }
+        }
+
+        @media (max-width: 767px) {
+
+            .hero-title,
+            .section-title,
+            .cta-title {
+                font-size: 2.5rem;
+                word-break: break-word;
+            }
+        }
+
+
+        /* Footer */
+        .footer {
+            background-color: var(--brand-light-gray);
+            padding: 3rem 1.5rem;
+            border-top: 1px solid #eee;
+        }
+
+        .footer .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+        }
+
+        .footer-logo-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-logo-group img {
+            max-width: 120px;
+        }
+
+        .footer-copyright {
+            color: var(--text-gray-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-copyright img {
+            max-width: 100px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            display: flex;
+        }
+
+        .social-links a {
+            color: var(--text-dark);
+            margin: 0 0.75rem;
+            transition: color 0.2s ease-in-out;
+        }
+
+        .social-links a:hover {
+            color: var(--brand-red);
+        }
+
+        .social-icon {
+            height: 1.5rem;
+            width: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .footer .container {
+                flex-direction: row;
+                text-align: left;
+            }
+
+            .footer-logo-group {
+                align-items: flex-start;
+                margin-bottom: 0;
+            }
+
+            .footer-copyright {
+                margin-bottom: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root">
+        <header class="header">
+            <div class="container">
+                <a href="index.html" class="logo-container" aria-label="Ana Sayfa">
+                    <img src="images/annie-logo.png" alt="Annie Müzikali" />
+                </a>
+
+                <nav class="main-nav" id="main-nav">
+                    <button class="close-menu-button" id="close-menu-button" aria-label="Close menu">
+                        <svg class="menu-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                    <ul class="nav-links">
+                        <li><a href="index.html">Ana Sayfa</a></li>
+                        <li><a href="hakkinda.html">Müzikal Hakkında</a></li>
+                        <li><a href="sartname.html">Şartname</a></li>
+                        <li><a href="ekip.html">Ekip</a></li>
+                        <li><a href="gecmis-projeler.html">Geçmiş Projeler</a></li>
+                    </ul>
+                </nav>
+
+                <button class="menu-button" id="menu-toggle" aria-label="Open menu" aria-expanded="false"
+                    aria-controls="main-nav">
+                    <svg class="menu-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <main>
+            <section class="about-section">
+                <div class="container">
+                    <div class="about-content">
+                        <h1>ANNIE MÜZİKALİ<br>İSTANBUL SEÇMELERİ</h1>
+                        <h2>Şartname ve Bilgilendirme</h2>
+
+                        <div class="info-box">
+                            <h3>A) Kimler Başvurabilir</h3>
+                            <ul>
+                                <li>8 - 18 yaş arası çocuklar başvurabilir.</li>
+                                <li>Şarkı söyleme, dans ve oyunculukta profesyonel yeterlilik aranır.</li>
+                                <li>Sahne deneyimi olan adaylar tercih sebebidir.</li>
+                            </ul>
+                        </div>
+
+                        <div class="info-box">
+                            <h3>B) Seçme Süreci</h3>
+                            <h4>1. Video Başvurusu (1. Aşama)</h4>
+                            <ul>
+                                <li>Adaylar kendilerini tanıttıkları kısa bir bilgilendirmeden sonra seçtikleri bir
+                                    şarkı
+                                    ve
+                                    tiradı varsa dans becerilerini gösterebilecekleri bir performansı video kaydı alıp
+                                    formda ilgili alana yüklemelidir.</li>
+                                <li>Son başvuru tarihi: <strong>18 Ekim 2025</strong></li>
+                            </ul>
+
+                            <h4>2. Yüz Yüze Seçme (2. Aşama)</h4>
+                            <ul>
+                                <li>İlk aşamayı geçen adaylar İstanbul’da yapılacak yüz yüze seçmelere davet edilir.
+                                </li>
+                                <li>Değerlendirme: şarkı, doğaçlama/oyunculuk ve dans.</li>
+                                <li>Tarih: <strong>26 Ekim 2025</strong></li>
+                            </ul>
+                        </div>
+
+                        <div class="info-box">
+                            <h3>C) Çalışma ve Prova Koşulları</h3>
+                            <ul>
+                                <li>Seçmeler sonucunda kabul edilen çocuk/genç sanatçılar; koro, dans ve sahne
+                                    çalışmalarıyla müzikale hazırlanacaktır.</li>
+                                <li>Provalar;<br>
+                                    FMV Işık Okulları Ayazağa Kampüsü (Işık Ev Sosyal Tesis binası):<br>
+                                    Pınar Mah. Büyükdere Cad. 194/3 Maslak- Sarıyer /İSTANBUL (34460)<br>
+                                    salonunda, her Pazar saat: 10:00 – 14:00 aralığında, 4 saatlik programla
+                                    sürdürülecektir.</li>
+                                <li>Tüm oyuncular kendilerine verilen replik ve dans figürlerini ezberlemek ve
+                                    çalışmakla
+                                    yükümlüdür.</li>
+                            </ul>
+                        </div>
+
+                        <div class="info-box">
+                            <h3>D) Rol Dağılımları</h3>
+                            <ul>
+                                <li>Rollere birden fazla çocuk seçilir; dönüşümlü olarak sahneye çıkarlar.</li>
+                                <li>Her çocuk, planlanan temsil sayısında aktif görev alır.</li>
+                                <li>Çocuk oyuncu kontenjanı <strong>30 kişi</strong> olarak belirlenmiştir.</li>
+                            </ul>
+                        </div>
+
+                        <div class="info-box">
+                            <h3>E) Maddi ve Hukuki Şartlar</h3>
+                            <ul>
+                                <li>Çocuk oyunculardan herhangi bir ücret alınmaz.</li>
+                                <li>Seçilen oyunculara her temsil için <strong>temsil başı ödeme</strong> yapılır.</li>
+                                <li>Katılımcılar, prova ve temsil takvimine düzenli katılmakla yükümlüdür.</li>
+                                <li>Fotoğraf ve videolar, Mozart Akademi tarafından tanıtım amacıyla kullanılabilir.
+                                </li>
+                                <li>Veliler ile <strong>yazılı sözleşme</strong> imzalanır (KVKK ve kullanım izinleri
+                                    dahil).</li>
+                            </ul>
+                        </div>
+
+                        <div class="info-box">
+                            <h3>F) Genel Bilgilendirme</h3>
+                            <ul>
+                                <li>Gösteriler, İstanbul’un önde gelen salonlarında düzenli olarak yapılacaktır.</li>
+                                <li>İlk sezonda <strong>ayda 1 temsil</strong> gerçekleştirilmesi hedeflenmektedir.</li>
+                                <li>Veliler süreç boyunca düzenli bilgilendirilecektir.</li>
+                                <li>Seçilen oyuncular prova saatinde çalışma alanında bulunmalı ve prova takvimine uyum
+                                    sağlamakla yükümlüdür.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="cta">
+                <div class="cta-overlay"></div>
+                <div class="cta-content">
+                    <h2 class="cta-title">SAHNE SENİ ÇAĞIRIYOR</h2>
+                    <p class="cta-subtitle">Seçmelere katılarak bu büyülü dünyanın bir parçası olma şansını yakala.</p>
+                    <a href="ekip.html" class="btn btn2">Değerlendirme Kurulu</a>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-logo-group">
+                    <img src="images/annie-logo.png" alt="Annie Müzikali" />
+                </div>
+
+                <p class="footer-copyright">
+                    &copy; 2025 Mozart Akademi. Tüm Hakları Saklıdır.
+                    <a href="https://www.mozartakademi.com" target="_blank" rel="noopener noreferrer"><img
+                            src="images/mozart-akademi-logo.png" alt="Mozart Akademi" class="about-image"></a>
+                </p>
+
+                <div class="social-links">
+                    <a href="https://www.facebook.com/share/1CkZqw8r9q/" aria-label="Facebook" target="_blank"
+                        rel="noreferrer">
+                        <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                            fill="currentColor">
+                            <path
+                                d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238 .195 2.238 .195v2.46h-1.26c-1.243 0-1.63 .771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" />
+                        </svg>
+                    </a>
+                    <a href="https://instagram.com/mozartakademi" aria-label="Instagram" target="_blank"
+                        rel="noreferrer">
+                        <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                            fill="currentColor">
+                            <path
+                                d="M12 2.163c3.204 0 3.584 .012 4.85 .07 3.252 .148 4.771 1.691 4.919 4.919.058 1.265 .069 1.645 .069 4.85s-.011 3.584-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266 .058-1.644 .07-4.85 .07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.069-1.645-.069-4.85s.011-3.584.069-4.85c.149-3.225 1.664-4.771 4.919-4.919C8.416 2.175 8.796 2.163 12 2.163zm0 1.626c-3.141 0-3.492 .011-4.71 .068-2.766 .126-3.858 1.225-3.984 3.984C3.25 8.508 3.238 8.859 3.238 12s.011 3.492.068 4.71c.126 2.766 1.218 3.858 3.984 3.984 1.218 .057 1.569 .068 4.71 .068s3.492-.011 4.71-.068c2.766-.126 3.858-1.225 3.984-3.984.057-1.218.068-1.569.068-4.71s-.011-3.492-.068-4.71c-.126-2.766-1.218-3.858-3.984-3.984C15.492 3.8 15.141 3.789 12 3.789zM12 8.169a3.831 3.831 0 100 7.662 3.831 3.831 0 000-7.662zm0 6.036a2.205 2.205 0 110-4.41 2.205 2.205 0 010 4.41zM16.965 6.57a1.2 1.2 0 100 2.4 1.2 1.2 0 000-2.4z" />
+                        </svg>
+                    </a>
+                    <a href="https://www.youtube.com/@mozartakademi211" aria-label="YouTube" target="_blank"
+                        rel="noreferrer">
+                        <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                            fill="currentColor">
+                            <path
+                                d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const closeMenuButton = document.getElementById('close-menu-button');
+        const mainNav = document.getElementById('main-nav');
+
+        if (menuToggle && mainNav && closeMenuButton) {
+            menuToggle.addEventListener('click', () => {
+                mainNav.classList.add('is-open');
+                menuToggle.setAttribute('aria-expanded', 'true');
+                menuToggle.style.visibility = 'hidden';
+                document.body.style.overflow = 'hidden';
+            });
+
+            closeMenuButton.addEventListener('click', () => {
+                mainNav.classList.remove('is-open');
+                menuToggle.setAttribute('aria-expanded', 'false');
+                menuToggle.style.visibility = 'visible';
+                document.body.style.overflow = '';
+            });
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Annie Müzikali - Proje Hakkında</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Reset */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Variables and Global Styles */
+        :root {
+            --brand-red: #c00;
+            --brand-dark-red: #a00;
+            --brand-white: #ffffff;
+            --brand-light-gray: #f8f8f8;
+            /* For footer */
+            --text-dark: #000000;
+            --text-light: #ffffff;
+            --text-gray-light: #d1d5db;
+            /* Light gray for dark backgrounds */
+            --text-gray-dark: #4a4a4a;
+            /* Dark gray for light backgrounds */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--brand-dark-red);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            line-height: 1.2;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        button,
+        a {
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .container {
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+
+        @media (min-width: 640px) {
+            .container {
+                max-width: 640px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                max-width: 768px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .container {
+                max-width: 1024px;
+            }
+        }
+
+        @media (min-width: 1280px) {
+            .container {
+                max-width: 1280px;
+            }
+        }
+
+        /* Header */
+        .header {
+            position: relative;
+            background-color: var(--brand-white);
+            z-index: 10;
+            padding: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            z-index: 1;
+        }
+
+        .logo-container img {
+            max-width: 200px;
+        }
+
+        .logo {
+            height: 2.5rem;
+            width: auto;
+        }
+
+        .menu-button {
+            padding: 0.5rem;
+            border-radius: 9999px;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            background-color: transparent;
+            color: var(--text-dark);
+            transition: background-color 0.2s ease-in-out;
+            z-index: 101;
+            /* Above nav overlay */
+        }
+
+        .menu-button:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        .menu-icon {
+            height: 1.5rem;
+            width: 1.5rem;
+        }
+
+        .close-menu-button {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            padding: 0.5rem;
+            border-radius: 9999px;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            background-color: transparent;
+            color: var(--text-dark);
+        }
+
+        /* Navigation Menu */
+        .main-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform: translateY(-100%);
+            transition: transform 0.3s ease-in-out, visibility 0.3s;
+            visibility: hidden;
+        }
+
+        .main-nav.is-open {
+            transform: translateY(0);
+            visibility: visible;
+        }
+
+        .nav-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+
+        .nav-links li {
+            margin: 2rem 0;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            font-size: 1.25rem;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .nav-links a:hover {
+            color: var(--brand-red);
+        }
+
+        @media (max-width: 767px) {
+            .logo-container img {
+                max-width: 120px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .header {
+                padding: 2rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+
+            .menu-button,
+            .close-menu-button {
+                display: none;
+            }
+
+            .main-nav {
+                position: static;
+                transform: none;
+                visibility: visible;
+                background: none;
+                backdrop-filter: none;
+                width: auto;
+                height: auto;
+            }
+
+            .nav-links {
+                display: flex;
+                flex-direction: row;
+                gap: 2rem;
+                align-items: center;
+            }
+
+            .nav-links li {
+                margin: 0;
+            }
+
+            .nav-links a {
+                font-size: 0.9rem;
+                color: var(--text-dark);
+            }
+
+            .nav-links a:hover {
+                color: var(--brand-red);
+            }
+        }
+
+        /* About Page Content */
+        .about-section {
+            padding: 4rem 0 5rem;
+        }
+
+        .about-content {
+            max-width: 80ch;
+            margin: 0 auto;
+        }
+
+        .about-content h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .info-box {
+            background-color: var(--brand-white);
+            color: var(--text-dark);
+            padding: 2rem;
+            border-radius: 0.5rem;
+            margin-top: 2rem;
+        }
+
+        .info-box h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--brand-red);
+            margin-bottom: 1.5rem;
+        }
+
+        .info-box h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .info-box p,
+        .info-box ul li {
+            color: var(--text-gray-dark);
+        }
+
+        .info-box p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .info-box ul {
+            list-style-position: inside;
+            padding-left: 0;
+            margin-bottom: 1.5rem;
+            list-style-type: none;
+        }
+
+        .info-box ul li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .info-box ul li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--brand-red);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+        }
+
+        .info-box ul li strong {
+            color: var(--text-dark);
+        }
+
+        /* SSS Grid */
+        .faq-grid {
+            display: grid;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .faq-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .faq-item {
+            background-color: var(--brand-light-gray);
+            border-radius: 0.5rem;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #eee;
+        }
+
+        .faq-item h3 {
+            background-color: var(--text-dark);
+            color: var(--brand-white);
+            padding: 1rem 1.5rem;
+            margin: 0;
+            font-size: 1.25rem;
+        }
+
+        .faq-item .faq-answer {
+            padding: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .faq-item .faq-answer p,
+        .faq-item .faq-answer ul {
+            margin-bottom: 0;
+        }
+
+
+        .btn {
+            display: inline-block;
+            width: auto;
+            text-align: center;
+            margin-top: 2rem;
+            padding: 1rem 2.5rem;
+            background-color: var(--brand-red);
+            color: var(--brand-white);
+            font-weight: 700;
+            font-size: 1.125rem;
+            border: none;
+            border-radius: 0.375rem;
+            transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            background-color: var(--brand-dark-red);
+        }
+
+        .awards-grid {
+            display: grid;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .awards-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .about-content h1 {
+                font-size: 2.25rem;
+                word-break: break-word;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .about-content h1 {
+                font-size: 3.75rem;
+            }
+        }
+
+
+        /* Call To Action Section */
+        .cta {
+            position: relative;
+            padding: 8rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background-image: url('matilda-05.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .cta-overlay {
+            position: absolute;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            padding: 0 1rem;
+        }
+
+        .cta-title {
+            font-weight: 900;
+            font-size: 3.75rem;
+            letter-spacing: -0.02em;
+            line-height: 1;
+            color: var(--text-light);
+        }
+
+        .cta-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-light);
+            margin-top: 1rem;
+            max-width: 60ch;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @media (min-width: 640px) {
+            .cta-title {
+                font-size: 4.5rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .cta-title {
+                font-size: 5rem;
+            }
+
+            .cta-subtitle {
+                font-size: 1.25rem;
+            }
+        }
+
+        @media (max-width: 767px) {
+
+            .hero-title,
+            .section-title,
+            .cta-title {
+                font-size: 2.5rem;
+                word-break: break-word;
+            }
+        }
+
+
+        /* Footer */
+        .footer {
+            background-color: var(--brand-light-gray);
+            padding: 3rem 1.5rem;
+            border-top: 1px solid #eee;
+        }
+
+        .footer .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+        }
+
+        .footer-logo-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-logo-group img {
+            max-width: 120px;
+        }
+
+        .footer-copyright {
+            color: var(--text-gray-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-copyright img {
+            max-width: 100px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            display: flex;
+        }
+
+        .social-links a {
+            color: var(--text-dark);
+            margin: 0 0.75rem;
+            transition: color 0.2s ease-in-out;
+        }
+
+        .social-links a:hover {
+            color: var(--brand-red);
+        }
+
+        .social-icon {
+            height: 1.5rem;
+            width: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .footer .container {
+                flex-direction: row;
+                text-align: left;
+            }
+
+            .footer-logo-group {
+                align-items: flex-start;
+                margin-bottom: 0;
+            }
+
+            .footer-copyright {
+                margin-bottom: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root">
+        <header class="header">
+            <div class="container">
+                <a href="index.html" class="logo-container" aria-label="Ana Sayfa">
+                    <img src="images/annie-logo.png" alt="Annie Müzikali" />
+                </a>
+
+                <nav class="main-nav" id="main-nav">
+                    <button class="close-menu-button" id="close-menu-button" aria-label="Close menu">
+                        <svg class="menu-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                    <ul class="nav-links">
+                        <li><a href="index.html">Ana Sayfa</a></li>
+                        <li><a href="hakkinda.html">Müzikal Hakkında</a></li>
+                        <li><a href="sartname.html">Şartname</a></li>
+                        <li><a href="ekip.html">Ekip</a></li>
+                        <li><a href="gecmis-projeler.html">Geçmiş Projeler</a></li>
+                    </ul>
+                </nav>
+
+                <button class="menu-button" id="menu-toggle" aria-label="Open menu" aria-expanded="false"
+                    aria-controls="main-nav">
+                    <svg class="menu-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <main>
+            <section class="about-section">
+                <div class="container">
+                    <div class="about-content">
+                        <h1>MÜZİKAL HAKKINDA</h1>
+
+                        <div class="info-box">
+                            <h2>Proje Hakkında</h2>
+                            <p>Annie Müzikali, Mozart Akademi’nin İstanbul sahnesine taşıdığı, her ay düzenli olarak
+                                oynanacak büyük ölçekli bir prodüksiyondur. Yapım; deneyimli yönetim, koreografi ve
+                                müzik
+                                süpervizyonu eşliğinde, profesyonel ve ünlü sanatçıların yer aldığı, yetişkin bir
+                                kadroyla
+                                hazırlanan Annie Müzikali, İstanbul’da yıl boyunca düzenli olarak sahnelenecektir.</p>
+                            <p>Bu proje kapsamında seçilecek çocuk oyunculara, yer aldıkları temsiller karşılığında
+                                profesyonel sahne performansı ücreti ödenecektir. Katılımcılardan herhangi bir kayıt,
+                                eğitim
+                                ya da prodüksiyon bedeli talep edilmeyecektir.</p>
+
+                            <h3>Aranan Nitelikler</h3>
+                            <ul>
+                                <li><strong>Vokal yeterlilik:</strong> doğru intonasyon, geniş ses aralığı, müzikal
+                                    ifade ve
+                                    sahne üzerinde şarkı söyleme disiplinine sahip olmak.</li>
+                                <li><strong>Dans becerisi:</strong> ritim duygusu gelişmiş, koreografiyi öğrenme ve
+                                    uygulamada yüksek adaptasyon, sahne koordinasyonu ve beden kontrolü.</li>
+                                <li><strong>Oyunculuk yetkinliği:</strong> doğaçlama kabiliyeti, dramatik ifade gücü,
+                                    karakter oluşturma ve metinle bütünleşebilme.</li>
+                            </ul>
+                        </div>
+
+                        <div class="info-box">
+                            <h2>SSS (Sıkça Sorulan Sorular)</h2>
+                            <div class="faq-grid">
+                                <div class="faq-item">
+                                    <h3>Ücret alınacak mı?</h3>
+                                    <div class="faq-answer">
+                                        <p>Hayır. Projede çocuk oyunculardan hiçbir ücret alınmaz; seçilenlere temsil
+                                            başı ödeme
+                                            yapılır.</p>
+                                    </div>
+                                </div>
+                                <div class="faq-item">
+                                    <h3>Kaç çocuk seçilecek?</h3>
+                                    <div class="faq-answer">
+                                        <p>Kadro kastlı ve dönüşümlü yapıdadır; toplamda 30 çocuk planlanmaktadır.</p>
+                                    </div>
+                                </div>
+                                <div class="faq-item">
+                                    <h3>Hangi beceriler aranıyor?</h3>
+                                    <div class="faq-answer">
+                                        <ul>
+                                            <li><strong>Vokal yeterlilik:</strong> doğru intonasyon, geniş ses aralığı,
+                                                müzikal ifade ve
+                                                sahne üzerinde şarkı söyleme disiplinine sahip olmak.</li>
+                                            <li><strong>Dans becerisi:</strong> ritim duygusu gelişmiş, koreografiyi
+                                                öğrenme ve
+                                                uygulamada yüksek adaptasyon, sahne koordinasyonu ve beden kontrolü.
+                                            </li>
+                                            <li><strong>Oyunculuk yetkinliği:</strong> doğaçlama kabiliyeti, dramatik
+                                                ifade gücü,
+                                                karakter oluşturma ve metinle bütünleşebilme.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="faq-item">
+                                    <h3>Provalar ne sıklıkta ve nerede?</h3>
+                                    <div class="faq-answer">
+                                        <p>Provalar; FMV Işık Okulları Ayazağa Kampüsü (Işık Ev Sosyal Tesis binası):
+                                            Pınar Mah.
+                                            Büyükdere Cad. 194/3 Maslak- Sarıyer /İSTANBUL (34460) salonunda, her Pazar
+                                            saat: 10:00 –
+                                            14:00 aralığında, 4 saatlik programla sürdürülecektir. Gösteri tarihi
+                                            yaklaştığında prova
+                                            sayıları artacaktır. Prova takvimi sonuçlardan sonra duyurulur.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="info-box">
+                            <h2>İletişim</h2>
+                            <p>
+                                Telefon: 0 (532) 746 8035 • 0 (506) 399 7859 • 0 (232) 465 00 34<br>
+                                E-posta: info@mozartakademi.com<br>
+                                Web: www.mozartakademi.com
+                            </p>
+                        </div>
+
+                        <div class="info-box">
+                            <h2>MÜZİKALİN TÜRKİYE HİKAYESİ</h2>
+                            <p>Bu projenin ülkemiz için çok önemli bir sanatsal başlangıç olacağını biliyoruz. 50 yıldır
+                                gösterimde olarak büyük bir ilgi ile izlenmeye ve sahnelenmeye devam eden Annie
+                                Müzikali’nin
+                                Türkiye prömiyerini Mozart Akademi gerçekleştirmiştir. Tüm yasal izinleri Mozart
+                                Akademi’ye
+                                aittir. Bu başarıda hiç kuşkusuz Mozart Akademi’nin marka saygınlığı ve geçmişte
+                                başarıyla
+                                hayata geçirdiği projelerin etkisi bulunuyor.</p>
+                            <p>Amerika, İngiltere, Avustralya başta olmak üzere dünyada onlarca ülkede turnesi yapılan,
+                                defalarca filmleri çekilen bir Broadway Müzikali olan Annie, Türkiye’de profesyonel
+                                olarak
+                                ilk kez tarafımızca sahnelendi ve tıpkı Amerika ve Avrupa'da olduğu gibi her yıl
+                                sahnelenmeye devam ediyor. Mozart Akademi olarak tüm sanatsal yeteneklerimiz ve
+                                deneyimlerimizle, Annie Müzikali prodüksiyonunu büyük bir başarıyla Türk izleyicisinin
+                                beğenisine sunmaya devam edeceğiz.</p>
+                        </div>
+
+                        <div class="info-box">
+                            <h2>NEDEN ANNİE ?</h2>
+                            <p>Kitabın yazarı Grey'in eseri yazmaya başladığı dönem, Amerikada Borsa çöküşünün yaşandığı
+                                ,
+                                ekonomik ve siyasi kaos ortamının halka en zorlu yaşam koşullarını dayattığı yıllara
+                                denk
+                                geliyor. Grey, umutsuzlukların ve kötü günlerin yaşandığı bu ortamda yazdığı bu eserle,
+                                insanların tekrar umutlanarak yaşama sarılmalarını amaçlamıştı. Bu amaca yönelik olarak
+                                da
+                                eserde zengin fakir uçurumu, insanoğlunun doğasında olan
+                                açgözlülük-aldatmaca-kabadayılık
+                                gibi öğeleri ve buna karşı mücadele edecek sempati , iyimserlik ve doğal bir adalet
+                                duygusuyla direnen bir figürü işleyerek bu amacına kolaylıkla ulaştı.</p>
+                            <p>Müzikal yıllar içerisinde yapılan değişiklerle siyasi öğelerden her ne kadar biraz
+                                uzaklaştırılıp, Annie'nin anne babasını arama çabalarını ön plana çıkarmaya çalışılsa da
+                                toplumsal öğelere yaptığı vurgu değişmeyerek, tarihsel bir dönem eseri olma özelliğini
+                                korudu. Dönem filmi olmasına rağmen, bugün neden hala aynı etkiyi yaratabiliyor sorusunu
+                                cevabı ise ekonomik sıkıntılar, zengin-fakir arasındaki uçurumlar gibi faktörlerin
+                                günümüzde
+                                de devam etmesi söylenebilir. Ancak en önemlisi hayat yolculuğu boyunca umut ve
+                                iyimserlik
+                                sahibi olmak ve koşullar ne olursa olsun bunu korumak Annie karakterinin simgelediği
+                                durumdur. Hırçın, huysuz ve geçimsiz bir karakter olan Başkan Wurbacks'ın Annie ile
+                                tanışmasının ardından bambaşka bir insan olması ve hatta ekonomiyi yeniden canlandırmak
+                                üzere harekete geçmeye motive olması tamamen Annie'nin iyimserliği sayesinde
+                                gerçekleşmiş
+                                bir mucizedir.</p>
+                            <p>Bu kırmızı kafalı çocuk bir başkana ilham verebiliyorsa bu geleceğe yönelik bulaşıcı bir
+                                umut
+                                demektir.</p>
+                        </div>
+
+                        <div class="info-box">
+                            <h2>BİR BROADWAY MASALI ANNİE ?</h2>
+                            <p>Broadway’in en bilinen müzikallerinden biri olan Annie, dünyanın farklı coğrafyalarındaki
+                                onlarca ülkede, binlerce kez sahnelenmiş bir başyapıt… Gösterime girdiği ülkelerde geniş
+                                yankı uyandıran Annie, rol verdiği çocukların yaşamlarında çok önemli kırılma noktaları
+                                oluşturuyor.</p>
+                            <p>James Whitcomb Riley’in 1885 yılında yazdığı şiirinde “Küçük Öksüz Annie” olarak
+                                adlandırdığı
+                                karakter, 1920'li yıllarda aynı adla çizgi roman olarak yayınlandı. 11 yaşındaki bir
+                                yetim
+                                kız çocuğunun, zengin ve varlık sahibi Oliver "Baba" Warbucks'ın ve sadık köpeği
+                                Sandy'nin
+                                maceralarına tanık olan okurlar, 1972 yılı Ocak ayında başka bir heyecanın tanığı olmaya
+                                başladı. Anılan yılda söz yazarı Martin Charnin Orphan, Annie ile ilgili bir müzikal
+                                yaratma
+                                fikrini besteci Charles Strouse ve Thomas Meehan'a açtı. Meehan, The New York Times
+                                gazetesinde yazdığı bir makalede Annie'nin "çürük bir fikir" olduğunu düşünmesine
+                                rağmen,
+                                Charnin'in ikna edildiğini açıkladı.</p>
+                            <p>Annie, kendisine derin bir nefret besleyen zalim yetimhane müdürü Bayan Hannigan'ın
+                                gazabı
+                                altında yaşayan bir çocuktur. Yaşının ötesinde bir dayanıklılıkla ve iyimser doğası
+                                gereği
+                                yetim olmanın getirdiği tüm zorluklara karşı savaşan Annie'nin milyarder bir işadamıyla
+                                (Oliver "Baba" Warbucks) tanıştıktan sonra yaşamı değişmeye başlar. Annie'yi evlat
+                                edinmeye
+                                karar veren işadamı, zamanla bu hayat dolu küçük kızı daha iyi tanıyacak ve kariyerine
+                                yaptığı pozitif etkiyi birebir hissetmeye başlayacaktır.</p>
+                            <p>Orijinal Broadway yapımı olan müzikal ilk kez 21 Nisan 1977'de Alvin Theatre'da
+                                sahnelendi.
+                                Annie olarak Andrea McArdle , Warbucks olarak Reid Shelton, Bayan Hannigan olarak
+                                Dorothy
+                                Loudon ve Grace Farrell olarak Sandy Faison rol aldı. Danielle Brisebois yetimlerden
+                                biriydi. Onbir Tony Ödülü'ne aday gösterildi ve En İyi Müzikal, En İyi Skor ve En İyi
+                                Kitap
+                                da dahil olmak üzere yedi ödül kazandı.</p>
+                            <p>Broadway'de daha sonra sahnelenen prodüksiyonlarda çocuk oyuncular; Shelley Bruce, Sarah
+                                Jessica Parker, Allison Smith ve Alyson Kirk görev aldı. Miss Hannigan rolünde ise Alice
+                                Ghostley, Dolores Wilson, Betty Hutton, Marcia Lewis ve JuneHavoc'u görev aldı. 2 Ocak
+                                1983'te kapatılan gösteri, 2,377 gösteriden sonra Alvin Tiyatrosu'nda (şu anda Neil
+                                Simon
+                                Tiyatrosu'nda) en uzun süre gösterimde kalan 2 gösteri olarak bir rekora imza attı.</p>
+                            <p>Müzikal 2012 yılında 35. yıldönümü sebebiyleyle Broadway'de tekrar sahnelenmeye başladı.
+                                Thomas Meehan ve James Lapine'in yönettiği müzikal revize edildi. 6 Ocak 2018 tarihine
+                                kadar
+                                gösterimde kalacak müzikal, gişelerde olağanüstü bir başarıya imza attı.</p>
+                            <p>The New York Times Gazetesi, Annie Müzikali’nin sadece Amerika Birleşik Devletleri'nde
+                                her
+                                yıl yaklaşık 900 gösterime girdiğini belirtiyor...</p>
+                        </div>
+
+                        <div class="info-box">
+                            <h2>ÖDÜLLER</h2>
+                            <div class="awards-grid">
+                                <div>
+                                    <h3>1977 Tony Ödülü Adayları</h3>
+                                    <ul>
+                                        <li>En İyi Müzikal</li>
+                                        <li>En İyi Müzikal Kitabı</li>
+                                        <li>En İyi Orijinal Puan</li>
+                                        <li>Bir Müziğe En İyi Kadın Oyuncu - Dorothy Loudon</li>
+                                        <li>En İyi Scenic Design</li>
+                                        <li>En İyi Kostüm Tasarımı</li>
+                                        <li>En İyi Koreografi</li>
+                                        <li>Müzikalin En İyi Yönü</li>
+                                        <li>Bir Müzikte En İyi Erkek Oyuncu - Reid Shelton</li>
+                                        <li>Bir Müziğe En İyi Kadın Oyuncu - Andrea McArdle</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h3>1977 Drama Desk Ödülü Adayları</h3>
+                                    <ul>
+                                        <li>Üstün Müzikal</li>
+                                        <li>Olağanüstü Kitap</li>
+                                        <li>Bir Müziksel Olan Seçkin Aktris- Dorothy Loudon</li>
+                                        <li>Olağanüstü Koreografi</li>
+                                        <li>Olağanüstü Şarkı Sözleri</li>
+                                        <li>Üstün Kostüm Tasarımı</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h3>Diğer Ödüller ve Adaylıklar</h3>
+                                    <ul>
+                                        <li>1977 Tiyatro Dünyası Ödülleri: Andrea McArdle</li>
+                                        <li>1978 Grammy Ödülü: En İyi Gösteri Albümü</li>
+                                        <li>1997 Tony Ödülü Adaylığı: Bir Müzikalin En İyi Yeniden Doğuşu</li>
+                                        <li>2013 Tony Ödülü Adaylığı: Bir Müzikalin En İyi Yeniden Doğuşu</li>
+                                        <li>2013 Drama Desk Ödülü Adaylıkları: Olağanüstü Oyun, Müzikli Üstün Aktör -
+                                            Anthony Warlow</li>
+                                        <li>2013 Drama Ligi Ödülü Adaylıkları: Bir Müziğin Seçkin Yeniden Doğuşu, Seçkin
+                                            Performans Ödülü - Lilla Crawford, Anthony Warlow</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="info-box">
+                            <h2>KONU VE KARAKTERLER</h2>
+                            <h3>1. PERDE</h3>
+                            <p>Olay 1933 yılında geçmektedir. Onbir yaşındaki Annie, ve arkadaşları Molly (6 yaşında),
+                                Kate
+                                (7 yaş), Tessie (10 yaş), Pepper (12 yaş), Jully ve Duffy (her ikisi de 13) ile birlikte
+                                Belediye Kız Çocuk Yetimhanesinde kalmaktadırlar. Molly kötü bir rüyadan uyanmış, Pepper
+                                ve
+                                Duffy'yi öfkelendirirken, Jully, Annie'ye onları susturmasını söyler ve sonunda Pepper
+                                ile
+                                kavga etmeye başlarlar. Annie kalkar ve herkese uykularına dönmelerini söyler. Molly
+                                annesi
+                                Annie'yi yetimhaneye terk ettiğinde ona bıraktığı notu tekrar okumasını ister. Duffy ve
+                                Biber yine kızdırıcı tavırlarla Annie'nin, anne babasıymış gibi davranarak taklit
+                                ederler
+                                ("Maybe Şarkısı").</p>
+                            <p>Annie, anne babasını bulmak için kaçmaya karar verir. ancak akşamdan kalmış Bayan
+                                Hannigan
+                                tarafından yakalanır. Bayan Hannigan bu duruma çok kızar ve bütün kızların yetimhaneyi
+                                derhal temizlemelerini ister. ("İt's The Hard Knock Life Şarkısı"). Kısa bir süre sonra,
+                                çamaşırhane görevlisi Bay Bundles, battaniyeleri almak için içeri girer. Miss Hannigan
+                                onunla flört ederken, Annie çamaşır sepetine tırmanır ve yetimlerin battaniyeleri ile
+                                örtünerek kendini gizler. Bayan Hannigan'ın gittiğini fark ettikten sonra Annie ve diğer
+                                yetimler seslendirdikleri şarkıyla kızgınlıklarını ifade ederler. ("Hard Knock Life
+                                Reprise
+                                )</p>
+                            <p>Annie başarıyla kaçar ve dostça bir sokak köpeğine rastlar. Onu sakinleştirirken daha iyi
+                                günlerin kendilerini beklediğini bir şarkıyla ifade eder.( Tomorrow ). Köpek
+                                yakalayıcısı
+                                köpeğin Annie'ye ait olup olmadığını sorar. Annie yalan söyleyerek, aslında yeni
+                                tanıdığı
+                                köpeğin kendisine ait olduğunu söyler ve o anda aklına gelen Sandy ismiyle köpeğe
+                                seslenerek
+                                yayına gelmesini ister. Köpek onu dinleyerek yanına gelir ve böylece yakalayıcı ikna
+                                olmuştur. Daha sonra ekonomik kriz sonrası işsiz ve evsiz bırakılan bir grubun kaldığı
+                                barınakta saklanır. (" Hooverville Song"). Ardından Bayan Hannigan tarafından gönderilen
+                                Lt.
+                                Ward adlı polis memuru Annie'yi yakalar ve yetimhaneye geri getirir.</p>
+                            <p>Bu arada Milyarder Oliver Warbucks'ın asistanı Grace Farrell, Noel tatili için
+                                yetimhaneden
+                                bir çocuğun konakta misafir edileceğini söylemek üzere yetimhaneye gelir. Annie Bayan
+                                Hannigan'ın ofisinde olduğu için Grace onu görür ve onu seçer. Bayan Hannigan gönülsüzce
+                                kabul eder. Bayan Hannigan ayrıldıktan sonra yetimhanedeki tüm kızlara ("Little Girls")
+                                olan
+                                nefretini dile getiren şarkısını söyler.</p>
+                            <p>Bu arada, Warbucks'ın konağındaki personel, Annie'yi çok sever ve onu ağırlamaktan
+                                memnuniyet
+                                duyduklarını bir şarkıyla ifade ederler. Annie de orada olmaktan çok mutludur. ("I Think
+                                I'm
+                                Gonna Like it Here "). Oliver Warbucks geri döndüğünde çok huysuz ve malikanesinde bir
+                                yetim
+                                olmasından dolayı çok rahatsızdır. Grace'e Annie'nin içinde olduğu bir reklam filmi
+                                çekilmesini ister, ancak Annie filmde Warbucks'un olmasını da ister. O ve Annie
+                                birbirlerini
+                                sevmeye başlarllar, New York City'de ("NYC") muşem bir gece geçirirler.</p>
+                            <p>Yetimhanede ise, Bayan Hannigan'ın kardeşi Rooster ve kız arkadaşı Lily, ziyarette
+                                gelmişlerdir. Bayan Hannigan, Annie'nin bir milyarderin evinde kaldığından bahseder ve
+                                nasıl
+                                ("Easy Street") olacağını bilmedikleri halde bu durumu avantaja çevirmenin yollarını
+                                düşünmeye başlarlar.</p>
+                            <p>Warbucks, Annie'ye ona bir kolye hediye etmek istediğini söyler. Çünkü boynundaki
+                                kolyenin
+                                eski olduğu fikrindedir ve çocuklarla ilgili pek bir şey bilmediği için verdiği hediye
+                                onda
+                                acı hatıralarının canlanmasına sebep olur. Annie kendini kötü hisseder, annesinin ona
+                                bıraktığı tek hatıra olan kolyeye bakarak gözyaşlarına boğulur, ve yeni kolyeyi almayı
+                                reddeder. Grace ve Warbucks Annie'ye ne olursa olsun ebeveynlerini bulmaya söz verirler.
+                            </p>
+
+                            <h3>2. PERDE</h3>
+                            <p>Warbucks' Annie'nin annesini bulmak üzere onun anne ve babası olduğunu kanıtlayabilen
+                                çifte $
+                                50,000 vereceğini bir radyo programında duyurur. Yetimhanede kızlar anonsu duyunca
+                                şaşırırlar. Bayan Hannigan içeri girer ve neler olduğunu öğrenmek ister. Molly,
+                                Annie'nin
+                                radyoda olduğunu ve ailesi için 50.000 $ ödülünün verileceğini söyler. Bayan Hannigan
+                                mutluluktan uçar. Kısa bir süre sonra, Ralph ve Shirley Mudge adlı bir çift, on bir yıl
+                                önce
+                                küçük bir kız burada terk ettiklerini ve onun için geri döndüklerini söylerler. Bayan
+                                Hannigan çok şaşırır. Ödülü kendi almak için kardeşi ve onu kız arkadaşı ile plan
+                                yaparlar.
+                            </p>
+                            <p>Warbucks, Annie'yi Washington DC'ye getirir ve burada Başkanla görüşecektir. Warbucks,
+                                Annie'nin dışarıda beklemesinin daha iyi olacağını düşünür., ancak Franklin D. Roosevelt
+                                kızı da görmek ister. Kabine tarafından reddedilmiş olmasına rağmen, "Tomorrow"
+                                şarkısını
+                                söylemeye başlarlar. Eve döndüğünde, Warbucks Annie'ye onu ne kadar çok sevdiğini
+                                söyler,
+                                anne-babası bulunamadığı için kendisini evlat edinmek istediğini açıklar. Noel partisi
+                                yapılacaktır. Annie Bayan Hannigan ve yetimleri davet etmek ister. Hazırlıklar
+                                yapılırken,
+                                personel Annie'nin gelişinin hayatlarını nasıl değiştirdiğini anlatırlar. ("Annie").</p>
+                            <p>Yargıç Louis Brandeis evlat edinme işlemlerini başlatmak için gelmiştir. Ancak Annie'yi
+                                bulmaya gelen Mr ve Mrs Mudge (Rooster and Lily, kılık değiştirmiş halleri ) tarafından
+                                tören yarıda kesilir. Grace ve Warbucks bu gelişme karşısında şaşkın ve üzgündürler.
+                                Yine
+                                de, Warbucks gerçek ebeveynleri olduklarına inanmaz. Noel partisi için Annie'nin bir
+                                gece
+                                daha kalmasına izin verilmelerini ister. Sabahın erken saatlerinde, "Annie" ("Maybe
+                                Reprise)
+                                şarkısı ile gönderilmeden, evlat edinilebileceğini ümit eder. Warbucks daha sonra
+                                Roosevelt
+                                ve Gizli Servisi'nden bir sürpriz ziyaret alır. Annie'nin ebeveynleri aslında bebekken
+                                ölen
+                                David ve Margaret Bennett'tir. Bundan sonra Bay ve Bayan Mudge, ödül parasını alabilmek
+                                için
+                                ortaya çıktıklarını itiraf ederler. Bayan Hannigan ile birlikte Gizli Servis tarafından
+                                tutuklanırlar ve herkes Başkan Roosevelt'in ekonomi için yaptığı yeni anlaşmasıyla
+                                sevinirler. ("Chiristmas Song" / "Tomorrow" final).</p>
+
+                            <h3>KARAKTERLER</h3>
+
+                            <h4>Oliver "Baba" Warbucks:</h4>
+                            <p>Annie'ye evini ve nihayet kalbini açan milyarder işadamı.</p>
+                            <h4>Annie:</h4>
+                            <p>Baş karakter. Onu yetimhaneye bırakan ebeveynlerini arayan hantal ve iyimser 11 yaşındaki
+                                yetim.</p>
+                            <h4>Grace Farrell:</h4>
+                            <p>Oliver Warbucks'ın sadık sekreteri.</p>
+                            <h4>Daniel "Rooster" Hannigan:</h4>
+                            <p>Bayan Hannigan'ın küçük kardeşidir, hapishaneden kaçan ve kız kardeşi ile Annie'yi
+                                kaçırarak
+                                büyük para ödülünü almaya çalışan dolandırıcı karakterdir.</p>
+                            <h4>Bayan Agatha Hannigan:</h4>
+                            <p>Yetimhanede müdüre olarak kalarak hayallerini gerçekleştirememiş bir kadındır;
+                                çocuklardan
+                                hoşlanmayan ve daha çok alkole olan düşkünlüğü ile tanınan biridir.</p>
+                            <h4>Erkek Kahya:</h4>
+                            <p>Warbucks Konağı'ndaki kahya; Grace'e iyi bir arkadaş.</p>
+                            <h4>Lily St. Regis:</h4>
+                            <p>Rooster'ın kız arkadaşı, egoist ve lükse ve paraya düşkün biri. O ve Rooster, Annie'nin
+                                "ebeveynleri" kılığına girerek, Warbucks'ı kandırıp 50.000 dolarlık ödüle sahip olmak
+                                ister.
+                            </p>
+                            <h4>Franklin D. Roosevelt:</h4>
+                            <p>Birleşik Devletler Başkanı, Annie'nin ebeveynlerini bulması için Bay Warbucks'a yardım
+                                ediyor. Annie ile görüşmesi üzerine umutlanarak yeni bir anlaşma yapmak ve Amerika'nın
+                                ekonomisini yeniden kurmak üzere harekete geçer.</p>
+                            <h4>Molly:</h4>
+                            <p>Annie'nin en iyi arkadaşı olan en küçük yetim (6).</p>
+                            <h4>Pepper:</h4>
+                            <p>Kontrol altına almaktan hoşlanan ve Annie ile pek iyi arkadaş olmayan en büyük patron
+                                (12).
+                            </p>
+                            <h4>Duffy:</h4>
+                            <p>En eski yetim (13), genellikle Pepper ile takılıyor, ancak herkesle arkadaş.</p>
+                            <h4>Jully:</h4>
+                            <p>Sessiz yetim (13) çok fazla konuşmayan, ancak tüm çocuklar için anne gibidir.</p>
+                            <h4>Tessie:</h4>
+                            <p>"Aman Tanrım" kelimelerini sık kullanmasıyla tanınan sık sık ağlayan yetim (10).</p>
+                            <h4>Kate:</h4>
+                            <p>Gerçekten konuşmayan, ancak herkesle arkadaş olan en utangaç yetim (7).</p>
+                            <h4>Louis Brandeis:</h4>
+                            <p>ABD Yüksek Mahkemesinin Adalet Eş Başkanı, Annie'nin evlat edinmesine yardımcı olmaya
+                                çalışır.</p>
+                            <h4>Bert Healy:</h4>
+                            <p>Annie'nin ailesini bulunmasına aracılık eden radyo spikeri.</p>
+                            <h4>Diğer Karakterler:</h4>
+                            <p>Boylan Kardeşler, Fred McCracken ve Wacky, Teğmen Ward, Sandy (Köpek), Bay Bundles,
+                                Cordell
+                                Hull, Frances Perkins, Louis Howe, Harold Ickes, Henry Morgenthau Jr., Star-To-Be, Bayan
+                                Greer, Bayan Pugh, Cecile, Annette ve daha birçok yan karakter.</p>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="cta">
+                <div class="cta-overlay"></div>
+                <div class="cta-content">
+                    <h2 class="cta-title">SAHNE SENİ ÇAĞIRIYOR</h2>
+                    <p class="cta-subtitle">Seçmelere katılarak bu büyülü dünyanın bir parçası olma şansını yakala.</p>
+                    <a href="ekip.html" class="btn btn2">Değerlendirme Kurulu</a>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-logo-group">
+                    <img src="images/annie-logo.png" alt="Annie Müzikali" />
+                </div>
+
+                <p class="footer-copyright">
+                    &copy; 2025 Mozart Akademi. Tüm Hakları Saklıdır.
+                    <a href="https://www.mozartakademi.com" target="_blank" rel="noopener noreferrer"><img
+                            src="images/mozart-akademi-logo.png" alt="Mozart Akademi" class="about-image"></a>
+                </p>
+
+                <div class="social-links">
+                    <a href="https://www.facebook.com/share/1CkZqw8r9q/" aria-label="Facebook" target="_blank"
+                        rel="noreferrer">
+                        <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                            fill="currentColor">
+                            <path
+                                d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238 .195 2.238 .195v2.46h-1.26c-1.243 0-1.63 .771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" />
+                        </svg>
+                    </a>
+                    <a href="https://instagram.com/mozartakademi" aria-label="Instagram" target="_blank"
+                        rel="noreferrer">
+                        <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                            fill="currentColor">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85 .07 3.252 .148 4.771 1.691 4.919 4.919.058 1.265 .069 1.645.069 4.85s-.011 3.584-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266 .058-1.644 .07-4.85 .07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.069-1.645-.069-4.85s.011-3.584.069-4.85c.149-3.225 1.664-4.771 4.919-4.919C8.416 2.175 8.796 2.163 12 2.163zm0 1.626c-3.141 0-3.492 .011-4.71 .068-2.766 .126-3.858 1.225-3.984 3.984C3.25 8.508 3.238 8.859 3.238 12s.011 3.492.068 4.71c.126 2.766 1.218 3.858 3.984 3.984 1.218 .057 1.569 .068 4.71 .068s3.492-.011 4.71-.068c2.766-.126 3.858-1.225 3.984-3.984.057-1.218.068-1.569.068-4.71s-.011-3.492-.068-4.71c-.126-2.766-1.218-3.858-3.984-3.984C15.492 3.8 15.141 3.789 12 3.789zM12 8.169a3.831 3.831 0 100 7.662 3.831 3.831 0 000-7.662zm0 6.036a2.205 2.205 0 110-4.41 2.205 2.205 0 010 4.41zM16.965 6.57a1.2 1.2 0 100 2.4 1.2 1.2 0 000-2.4z" />
+                        </svg>
+                    </a>
+                    <a href="https://www.youtube.com/@mozartakademi211" aria-label="YouTube" target="_blank"
+                        rel="noreferrer">
+                        <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                            fill="currentColor">
+                            <path
+                                d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const closeMenuButton = document.getElementById('close-menu-button');
+        const mainNav = document.getElementById('main-nav');
+
+        if (menuToggle && mainNav && closeMenuButton) {
+            menuToggle.addEventListener('click', () => {
+                mainNav.classList.add('is-open');
+                menuToggle.setAttribute('aria-expanded', 'true');
+                menuToggle.style.visibility = 'hidden';
+                document.body.style.overflow = 'hidden';
+            });
+
+            closeMenuButton.addEventListener('click', () => {
+                mainNav.classList.remove('is-open');
+                menuToggle.setAttribute('aria-expanded', 'false');
+                menuToggle.style.visibility = 'visible';
+                document.body.style.overflow = '';
+            });
+        }
+    </script>
+</body>
+
+</html>
